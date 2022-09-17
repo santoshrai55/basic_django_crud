@@ -1,3 +1,4 @@
+import email
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -12,6 +13,7 @@ def home(request):
 
 
 def itemDelete(request, pk):
+    fields = MiniCrud.objects.all()
     profile = MiniCrud.objects.get(pk=pk)
     profile.delete()
     return render(request, 'mini_app/home.html', {'fields': fields})
@@ -31,6 +33,23 @@ def edit(request, pk):
         profile.save
         print(first_name+last_name+new_email)
     return render(request, 'mini_app/edit.html', {'profile': profile})
+
+
+@login_required
+def addItem(request):
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        new_email = request.POST['email']
+        age = request.POST['age']
+        manager = request.POST['manager']
+        m = MiniCrud(first_name=first_name, last_name=last_name,
+                     email=new_email, age=age, manager=manager)
+        m.save()
+        fields = MiniCrud.objects.all()
+        return render(request, 'mini_app/home.html', {'fields': fields})
+    else:
+        return render(request, 'mini_app/create.html')
 
 
 def userLogin(request):

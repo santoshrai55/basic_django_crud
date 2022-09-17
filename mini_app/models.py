@@ -10,7 +10,8 @@ class MiniCrud(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(null=True)
     age = models.IntegerField()
-    manager = models.ForeignKey(User, on_delete=models.CASCADE)
+    manager = models.ForeignKey(
+        User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.first_name + ' has been created by ' + self.manager.first_name
