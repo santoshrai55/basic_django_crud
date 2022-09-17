@@ -13,9 +13,8 @@
             <p class="">Last Name: {{item.last_name}} </p>
             <p class="">Age: {{item.age}} </p>
             <p class="">Email: {{item.email}} </p>
-            <p class="">Managed by: {{item.manager}} </p> {% if user.is_authenticated %} <a
-                href="{% url 'mini_app:edit' item.pk %}">
-                <button class="mt-3 btn btn-outline-info" type="button">Edit</button>
-            </a> {% endif %}
+            <p class="">Managed by: {{item.manager}} </p> {% if user.is_authenticated %} <a class="btn btn-outline-info"
+                href="{% url 'mini_app:edit' item.pk %}">Edit</a>
+            <a class="btn btn-outline-info" href="{% url 'mini_app:delete' item.pk %}">Delete</a> {% endif %}
         </div>
     </div> {% endfor %} {% endblock header-footer %} </div>

@@ -4,11 +4,16 @@ from django.shortcuts import render
 from . models import MiniCrud
 
 # Create your views here.
-fields = MiniCrud.objects.all()
 
 
 def home(request):
+    fields = MiniCrud.objects.all()
+    return render(request, 'mini_app/home.html', {'fields': fields})
 
+
+def itemDelete(request, pk):
+    profile = MiniCrud.objects.get(pk=pk)
+    profile.delete()
     return render(request, 'mini_app/home.html', {'fields': fields})
 
 
@@ -29,7 +34,7 @@ def edit(request, pk):
 
 
 def userLogin(request):
-
+    fields = MiniCrud.objects.all()
     if request.method == 'POST':
         username_passed = request.POST['username']
         password__passed = request.POST['password']
