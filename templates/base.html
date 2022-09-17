@@ -13,9 +13,10 @@
 
 <body>
     <div class="container py-4">
-        <nav class="navbar navbar-expand-lg bg-light rounded" aria-label="Eleventh navbar example">
+        <nav class="navbar navbar-expand-lg bg-light rounded fs-4 shadow-sm" aria-label="Eleventh navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'mini_app:home' %}">MiniCrud</a>
+                <a class="navbar-brand text-secondary fs-3 fw-bold" href="{% url 'mini_app:home' %}">Mini<span
+                        class="text-info">Crud</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -24,9 +25,10 @@
                 <div class="collapse navbar-collapse" id="navbarsExample09">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0"> {% if not user.is_authenticated %} <li
                             class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'mini_app:login' %}">Login</a>
+                            <a class="nav-link active text-secondary" aria-current="page"
+                                href="{% url 'mini_app:login' %}">Login</a>
                         </li> {% endif %} {% if user.is_authenticated %} <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link text-secondary" href="{% url "mini_app:logout" %}">Logout</a>
                         </li> {% endif %} </ul>
                     <form role="search">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">

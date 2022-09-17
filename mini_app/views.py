@@ -1,17 +1,18 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from . models import MiniCrud
 
 # Create your views here.
+fields = MiniCrud.objects.all()
 
 
 def home(request):
 
-    fields = MiniCrud.objects.all()
-
     return render(request, 'mini_app/home.html', {'fields': fields})
 
 
+@login_required
 def edit(request, pk):
 
     profile = MiniCrud.objects.get(pk=pk)
@@ -29,7 +30,6 @@ def edit(request, pk):
 
 def userLogin(request):
 
-    fields = MiniCrud.objects.all()
     if request.method == 'POST':
         username_passed = request.POST['username']
         password__passed = request.POST['password']
@@ -43,3 +43,9 @@ def userLogin(request):
     else:
         # Return an 'invalid login' error message.
         return render(request, 'mini_app/login.html')
+
+
+def userLogout(request):
+    logout(request)
+    # Redirect to a success page.
+    return render(request, 'mini_app/home.html', {'fields': fields})
