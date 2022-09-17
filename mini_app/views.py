@@ -74,6 +74,7 @@ def userLogin(request):
 
 def userLogout(request):
     logout(request)
-    fields = MiniCrud.objects.all()
+    # fields = MiniCrud.objects.all()
     # Redirect to a success page.
-    return render(request, 'mini_app/home.html', {'fields': fields})
+    return redirect('mini_app:home')
+    # return redirect(request, 'mini_app/home.html', {'fields': fields})
