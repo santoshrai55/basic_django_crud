@@ -29,7 +29,11 @@
                                 href="{% url 'mini_app:login' %}">Login</a>
                         </li> {% endif %} {% if user.is_authenticated %} <li class="nav-item">
                             <a class="nav-link text-secondary" href="{% url "mini_app:logout" %}">Logout</a>
-                        </li> {% endif %} </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="{% url "mini_app:add" %}">Add Profile</a>
+                        </li> {% endif %}
+                    </ul>
                     <form role="search">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     </form>

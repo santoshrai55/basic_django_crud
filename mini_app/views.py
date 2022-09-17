@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from . models import MiniCrud
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -43,6 +44,8 @@ def addItem(request):
         new_email = request.POST['email']
         age = request.POST['age']
         manager = request.POST['manager']
+
+        manager = User.objects.get(username=manager)
         m = MiniCrud(first_name=first_name, last_name=last_name,
                      email=new_email, age=age, manager=manager)
         m.save()
@@ -71,5 +74,6 @@ def userLogin(request):
 
 def userLogout(request):
     logout(request)
+    fields = MiniCrud.objects.all()
     # Redirect to a success page.
     return render(request, 'mini_app/home.html', {'fields': fields})

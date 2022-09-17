@@ -1,8 +1,11 @@
-{% extends "base.html" %} {% block header-footer %} <div class="p-5 mb-4 bg-light rounded-3">
+{% extends "base.html" %} {% block header-footer %} <p class="mt-2 text-end">You are working as <span
+        class="text-info">{{user.first_name}}</span></p>
+<div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
         <h1 class="fs-4 "><i class="bi bi-person-circle"></i>
             <span class="text-info">Add</span>user
-        </h1> {{user}} <form action="" method="post"> {% csrf_token %} <div class="mb-3">
+        </h1>
+        <form action="" method="post"> {% csrf_token %} <div class="mb-3">
                 <label for="first_name" class="col-form-label">First Name:</label>
                 <input class="form-control" type="text" name="first_name" id="first_name" placeholder="First Name">
             </div>
