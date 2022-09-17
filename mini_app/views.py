@@ -1,7 +1,7 @@
 import email
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from . models import MiniCrud
 from django.contrib.auth.models import User
 
@@ -13,11 +13,14 @@ def home(request):
     return render(request, 'mini_app/home.html', {'fields': fields})
 
 
+@login_required
 def itemDelete(request, pk):
-    fields = MiniCrud.objects.all()
+    # fields = MiniCrud.objects.all()
     profile = MiniCrud.objects.get(pk=pk)
     profile.delete()
-    return render(request, 'mini_app/home.html', {'fields': fields})
+    # return render(request, 'mini_app/home.html', {'fields': fields})
+    return redirect('mini_app:home')
+    # return reverse('mini_app:home')
 
 
 @login_required
