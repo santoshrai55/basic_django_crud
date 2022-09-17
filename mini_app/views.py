@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from . models import MiniCrud
 
@@ -24,3 +25,21 @@ def edit(request, pk):
         profile.save
         print(first_name+last_name+new_email)
     return render(request, 'mini_app/edit.html', {'profile': profile})
+
+
+def userLogin(request):
+
+    fields = MiniCrud.objects.all()
+    if request.method == 'POST':
+        username_passed = request.POST['username']
+        password__passed = request.POST['password']
+        user = authenticate(request, username=username_passed,
+                            password=password__passed)
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page.
+
+            return render(request, 'mini_app/home.html', {'fields': fields})
+    else:
+        # Return an 'invalid login' error message.
+        return render(request, 'mini_app/login.html')

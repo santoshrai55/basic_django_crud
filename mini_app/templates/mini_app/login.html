@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block header-footer %} <div class="container mt-5 text-center" style="max-width: 500px;">
+    <main class="form-signin w-100 m-auto pt-5">
+        <form method="POST"> {% csrf_token %} <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt=""
+                width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                <label for="username">User Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                <label for="password">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Sign in</button>
+        </form>
+    </main>
+</div> {% endblock header-footer %}
