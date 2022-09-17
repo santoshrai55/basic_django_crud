@@ -1,7 +1,7 @@
 import email
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . models import MiniCrud
 from django.contrib.auth.models import User
 
@@ -66,7 +66,7 @@ def userLogin(request):
             login(request, user)
             # Redirect to a success page.
 
-            return render(request, 'mini_app/home.html', {'fields': fields})
+            return redirect('mini_app:home')
     else:
         # Return an 'invalid login' error message.
         return render(request, 'mini_app/login.html')

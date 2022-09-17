@@ -5,8 +5,8 @@
 </div>   --> {% if user.is_authenticated %} <p class="mt-2 text-end">Welcome <span
         class="text-info">{{user.first_name}}</span></p> {% endif %} <div
     class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5 m-1"> {% for item in fields %} <div
-        class="col d-flex align-items-start mb-5 ">
-        <div>
+        class="col d-flex align-items-start mb-3 ">
+        <div class="lh-1">
             <h1 class="fs-4 "><i class="bi bi-person-circle"></i>
                 <span class="text-info">Pro</span>file
             </h1>
@@ -19,3 +19,4 @@
             <a class="btn btn-outline-info" href="{% url 'mini_app:delete' item.pk %}">Delete</a> {% endif %}
         </div>
     </div> {% endfor %} {% endblock header-footer %} </div>
+<!-- {% if user == item.manager %} {% endif %} this is a filter condition -->
