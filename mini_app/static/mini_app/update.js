@@ -27,6 +27,15 @@ email_new.addEventListener("keypress", (event) => {
       para.setAttribute("id", "label_info");
       document.getElementById("email_label").appendChild(para);
     }
+  } else if (email_new.includes("@") === false) {
+    btn.classList.add("disabled");
+    if (label_email.childElementCount === 0) {
+      const para = document.createElement("span");
+      para.innerHTML = " An email must contain @ !";
+      para.classList.add("text-danger");
+      para.setAttribute("id", "label_info");
+      document.getElementById("email_label").appendChild(para);
+    }
   } else {
     if (label_email.querySelector("#label_info") !== null) {
       label_email.removeChild(label_email.firstElementChild);
