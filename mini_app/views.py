@@ -42,9 +42,9 @@ def edit(request, pk):
 @login_required
 def addItem(request):
     if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        new_email = request.POST['email']
+        first_name = (request.POST['first_name']).strip()
+        last_name = (request.POST['last_name']).strip()
+        new_email = (request.POST['email']).strip()
         age = request.POST['age']
         manager = request.POST['manager']
 
