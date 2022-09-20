@@ -28,9 +28,9 @@ def edit(request, pk):
 
     profile = MiniCrud.objects.get(pk=pk)
     if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        new_email = request.POST['email']
+        first_name = (request.POST['first_name']).strip()
+        last_name = (request.POST['last_name']).strip()
+        new_email = (request.POST['email']).strip()
         profile.email = new_email
         profile.first_name = first_name
         profile.last_name = last_name

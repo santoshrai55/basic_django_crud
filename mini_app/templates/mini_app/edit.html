@@ -1,12 +1,12 @@
-{% extends "base.html" %} {% block header-footer %} <div class="p-5 mb-4 bg-light rounded-3">
+{% extends "base.html" %} {% block header-footer %} {% load static %} <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
         <h1 class="fs-4 "><i class="bi bi-person-circle"></i>
             <span class="text-info">Pro</span>file
         </h1>
-        <p class="notification"> First Name: {{profile.first_name}} </p>
-        <p class="notification"> Last Name: {{profile.last_name}} </p>
-        <p class="notification"> Email: {{profile.email}} </p>
-        <h2 class="fs-5 mt-5">Edit Profile</h2>
+        <p class="notification">First Name: <span id="name_first">{{profile.first_name}}</span> </p>
+        <p class="notification">Last Name: <span id="name_last">{{profile.last_name}}</span></p>
+        <p class=" notification"> Email: <span id="myemail">{{profile.email}}</span> </p>
+        <h2 class=" fs-5 mt-5">Edit Profile</h2>
         <form action="" method="post"> {% csrf_token %} <div class="mb-3">
                 <label for="first_name" class="col-form-label">First Name:</label>
                 <input class="form-control" type="text" name="first_name" id="first_name" placeholder="First Name"
@@ -23,8 +23,9 @@
                     value="{{profile.email}}">
             </div>
             <div class="">
-                <button class="mt-3 btn btn-outline-info" type="submit">Update</button>
+                <button class="mt-3 btn btn-outline-info" type="submit" id="mybtn">Update</button>
             </div>
         </form>
     </div>
-</div> {% endblock header-footer %}
+</div>
+<script src="{% static 'mini_app/update.js' %}"></script> {% endblock header-footer %}
