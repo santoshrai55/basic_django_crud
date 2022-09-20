@@ -19,6 +19,7 @@ email_new.addEventListener("keypress", (event) => {
   label_email = document.getElementById("email_label");
   if (email_new.length === 0) {
     btn.classList.add("disabled");
+
     if (label_email.childElementCount === 0) {
       const para = document.createElement("span");
       para.innerHTML = " This cant by empty!";

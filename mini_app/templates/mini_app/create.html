@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block header-footer %} <p class="mt-2 text-end">You are working as <span
+{% extends "base.html" %} {% block header-footer %} {% load static %}<p class="mt-2 text-end">You are working as <span
         class="text-info">{{user.first_name}}</span></p>
 <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
@@ -6,7 +6,7 @@
             <span class="text-info">Add</span>user
         </h1>
         <form action="" method="post"> {% csrf_token %} <div class="mb-3">
-                <label for="first_name" class="col-form-label">First Name:</label>
+                <label for="first_name" class="col-form-label" id="firstname_label">First Name:</label>
                 <input class="form-control" type="text" name="first_name" id="first_name" placeholder="First Name">
             </div>
             <div class="mb-3">
@@ -30,4 +30,5 @@
             </div>
         </form>
     </div>
-</div> {% endblock header-footer %}
+</div>
+<script src="{% static 'mini_app/create.js'%}"></script> {% endblock header-footer %}
