@@ -8,17 +8,18 @@
         <p class=" notification"> Email: <span id="myemail">{{profile.email}}</span> </p>
         <h2 class=" fs-5 mt-5">Edit Profile</h2>
         <form action="" method="post"> {% csrf_token %} <div class="mb-3">
-                <label for="first_name" class="col-form-label">First Name:</label>
+                <label for="first_name" class="col-form-label" id="firstname_label">First Name: <span
+                        class="text-danger" id="firstname_note"></span></label>
                 <input class="form-control" type="text" name="first_name" id="first_name" placeholder="First Name"
                     value="{{profile.first_name}}">
             </div>
             <div class="mb-3">
-                <label for="last_name" class="col-form-label">Last Name:</label>
+                <label for="last_name" class="col-form-label" id="lastname_label">Last Name: </label>
                 <input class="form-control" type="text" name="last_name" id="last_name" placeholder="Last Name"
                     value="{{profile.last_name}}">
             </div>
             <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
+                <label for="email" class="col-form-label" id="email_label">Email:</label>
                 <input class="form-control" type="email" name="email" id="email" placeholder="Email"
                     value="{{profile.email}}">
             </div>
